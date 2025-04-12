@@ -1,13 +1,13 @@
 {
     "openapi": "3.0.2",
     "info": {
-        "title": "Cricket Database PostgreSQL API",
+        "title": "Sales Order Database PostgreSQL API",
         "version": "1.0.0",
         "description": "API for connecting to a PostgreSQL database using SQLAlchemy. This API allows executing PostgreSQL-compliant SQL queries based on user questions. Results reflect actual query execution. Do not fabricate data."
     },
     "servers": [
         {
-            "url": "https://supabase.hosting.tigzig.com",
+            "url": "https://supabase-fastapi-sqlachemy.onrender.com",
             "description": "Main API server"
         }
     ],
@@ -36,7 +36,7 @@
                             "type": "string"
                         },
                         "description": "API key for authentication",
-                        "example": "rex-QAQ_bNvD7j0E2wXrCEzRL"
+                        "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt5cXNwdG1qeGJyZ3lmdXR4bWpuIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MzI0MTQwMywiZXhwIjoyMDU4ODE3NDAzfQ.J7z_FMc8AYCF4vopqmXujkeS1FaWK5MvmjrBtB_wHMY"
                     }
                 ],
                 "responses": {
