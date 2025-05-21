@@ -57,7 +57,11 @@ app.add_middleware(
 engine = create_engine(DATABASE_URL, pool_pre_ping=True)
 
 @app.get("/sqlquery_alchemy/")
-async def sqlquery_alchemy(sqlquery: str, api_key: str, request: Request) -> Any:
+async def sqlquery_alchemy(sqlquery: str, request: Request) -> Any:
+    api_key = request.query_params.get("api_key") or request.headers.get("api_key")
+
+    if api_key != REX_API_KEY:
+        raise HTTPException(status_code=401, detail="Invalid API key")
     """Execute SQL query using SQLAlchemy and return results directly."""
     if api_key != REX_API_KEY:
         raise HTTPException(status_code=401, detail="Invalid API key")
@@ -98,7 +102,11 @@ async def sqlquery_alchemy(sqlquery: str, api_key: str, request: Request) -> Any
         raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
 
 @app.get("/sqlquery_direct/")
-async def sqlquery_direct(sqlquery: str, api_key: str, request: Request) -> Any:
+async def sqlquery_direct(sqlquery: str, request: Request) -> Any:
+    api_key = request.query_params.get("api_key") or request.headers.get("api_key")
+
+    if api_key != REX_API_KEY:
+        raise HTTPException(status_code=401, detail="Invalid API key")
     """Execute SQL query using direct psycopg2 connection and return results."""
     if api_key != REX_API_KEY:
         raise HTTPException(status_code=401, detail="Invalid API key")
